@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 from core.models import PersonInfo
+from core.models import Register
 
 
 def ping(request):
@@ -34,3 +35,22 @@ class First(TemplateView):
         context = super().get_context_data(**kwargs)
         context['first'] = PersonInfo.objects.filter()
         return context
+
+
+class Login(TemplateView):
+    template_name = "login/signup.html"
+
+# Move form_submission outside of the class
+@csrf_exempt
+def form_submission(request):
+    if request.method != 'POST':
+        return JsonResponse({'status': 'error', 'message': 'Only POST requests are allowed'})
+    
+    data = json.loads(request.body)
+    name = data.get('name', '')
+    email = data.get('email', '')
+    phone = data.get('phone', '')
+    
+    Register.objects.create(name=name, email=email, phone=phone)
+
+    return JsonResponse({'status': 'success'})

@@ -19,6 +19,7 @@ from django.urls import path
 from core.views import ping
 from core.views import Home
 from core.views import First
+from core.views import Login, form_submission
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -29,6 +30,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", Home.as_view(), name='home'),
     path("start/", First.as_view(), name='start'),
+    path('login/', Login.as_view(), name='login'),
+    path('login/form_submission/', form_submission, name='Login.form_submission'), 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

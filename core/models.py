@@ -31,3 +31,15 @@ class PersonInfo(BaseModel):
     def __str__(self) -> str:
         return self.name
     
+
+class Register(BaseModel):
+    name = models.CharField("Нэр*", max_length=255)
+    email = models.EmailField(verbose_name="И-мэйл*", max_length=255)
+    phone = models.CharField(verbose_name="Утасны дугаар*", max_length=50)
+    
+    class Meta:
+        verbose_name = "login"
+        verbose_name_plural = "login"
+        
+    def __str__(self) -> str:
+        return self.name
