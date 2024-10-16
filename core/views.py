@@ -9,7 +9,9 @@ from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 from core.models import PersonInfo
 from core.models import Register
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import make_password
 
 
 def ping(request):
@@ -49,12 +51,17 @@ def sign_in_submission(request):
         username = data.get('username')
         password = data.get('password')
 
-        users = authenticate(request, username=username, password=password)
-        if users is not None:
-            login(request, users)  # Log the user in
-            return JsonResponse({'status': 'success', 'message': 'Logged in successfully', 'redirect_url': '/dashboard/'})  # Change the URL to the desired page
-        else:
+        try:
+            # Fetch user from Register model
+            user = Register.objects.get(username=username)
+            if check_password(password, user.password):  # Check the hashed password
+                login(request, user)  # Log the user in
+                return JsonResponse({'status': 'success', 'message': 'Logged in successfully', 'redirect_url': '/dashboard/'})
+            else:
+                return JsonResponse({'status': 'error', 'message': 'Invalid username or password'})
+        except Register.DoesNotExist:
             return JsonResponse({'status': 'error', 'message': 'Invalid username or password'})
+
     return JsonResponse({'status': 'error', 'message': 'Only POST requests are allowed'})
 
 
@@ -67,13 +74,17 @@ def sign_up_submission(request):
             password = data.get("password")
             phone = data.get("phone")
 
-            users = Register.objects.create(
+            # Hash the password before saving
+            hashed_password = make_password(password)
+
+            # Create a new Register instance with hashed password
+            user = Register.objects.create(
                 username=name,
                 email=email,
                 phone=phone,
-                password=(password),  # Hash the password
+                password=hashed_password,
             )
-            users.save()
+            user.save()
 
             return JsonResponse({"status": "success", "message": "User registered successfully."})
 

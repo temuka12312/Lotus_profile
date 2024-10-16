@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link
-      rel="icon"
+       rel="icon"
       type="image/x-icon"
       href="{{ STATIC_URL }}images\lotus_logo.png"
     />
@@ -37,6 +37,12 @@
                 <div class="group">
                     <label for="sign-in-pass" class="label">Password</label>
                     <input id="sign-in-pass" name="password" type="password" class="input" />
+                </div>
+                <div class="group">
+                  <input id="check" type="checkbox" class="check" checked />
+                  <label for="check"
+                    ><span class="icon"></span> Keep me Signed in</label
+                  >
                 </div>
                 <div class="group">
                     <input type="submit" class="button" value="Sign In" />

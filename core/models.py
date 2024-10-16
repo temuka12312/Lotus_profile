@@ -37,7 +37,7 @@ class Register(BaseModel):
     username = models.CharField("Нэр*", max_length=255, null=True, blank=True)
     email = models.EmailField(verbose_name="И-мэйл*", max_length=255, null=True, blank=True)
     phone = models.CharField(verbose_name="Утасны дугаар*", max_length=50, null=True, blank=True)
-    password = models.IntegerField(verbose_name="password", null=True, blank=True)
+    password = models.CharField(verbose_name="password", max_length=400, null=True, blank=True)
     
     class Meta:
         verbose_name = "login"
