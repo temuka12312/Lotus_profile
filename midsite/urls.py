@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from core.views import ping
 from core.views import Home
 from core.views import First
@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from core.views import sign_in_submission
 from core.views import sign_up_submission
-
+import debug_toolbar
 
 
 urlpatterns = [
@@ -35,6 +35,7 @@ urlpatterns = [
     path('login/', Home.as_view(), name='login'),
     path('sign-in/', sign_in_submission, name='sign_in_submission'),
     path('sign-up/', sign_up_submission, name='sign_up_submission'),
+    path('__debug__/', include(debug_toolbar.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
