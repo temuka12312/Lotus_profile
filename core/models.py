@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from django.contrib.auth.hashers import make_password
 
 from io import BytesIO
 from PIL import Image
@@ -22,7 +23,7 @@ class PersonInfo(BaseModel):
     person_image = models.ImageField(verbose_name="Зураг", null=True, blank=True, upload_to="midsite/person-information")
     bio = models.TextField(verbose_name="bio")
     phone = models.IntegerField(verbose_name="Утасны дугаар")
-    gmail = models.CharField(verbose_name="Gmail", max_length=100)
+    email = models.CharField(verbose_name="Gmail", max_length=100, null=True, blank=True)
     
     class Meta:
         verbose_name = "Person information"
@@ -33,13 +34,14 @@ class PersonInfo(BaseModel):
     
 
 class Register(BaseModel):
-    name = models.CharField("Нэр*", max_length=255)
-    email = models.EmailField(verbose_name="И-мэйл*", max_length=255)
-    phone = models.CharField(verbose_name="Утасны дугаар*", max_length=50)
+    username = models.CharField("Нэр*", max_length=255, null=True, blank=True)
+    email = models.EmailField(verbose_name="И-мэйл*", max_length=255, null=True, blank=True)
+    phone = models.CharField(verbose_name="Утасны дугаар*", max_length=50, null=True, blank=True)
+    password = models.IntegerField(verbose_name="password", null=True, blank=True)
     
     class Meta:
         verbose_name = "login"
         verbose_name_plural = "login"
         
     def __str__(self) -> str:
-        return self.name
+        return self.username
