@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
             password: password
         };
 
+        
         fetch(signInUrl, {
             method: 'POST',
             headers: {
