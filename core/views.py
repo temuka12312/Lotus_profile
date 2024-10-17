@@ -22,6 +22,7 @@ def ping(request):
     data['app'] = "core"
     return JsonResponse(data)
 
+logger = logging.getLogger(__name__)
 
 class Home(TemplateView):
     template_name = "index.html"
@@ -43,29 +44,32 @@ class First(TemplateView):
 class Login(TemplateView):
     template_name = "login/signup.html"
 
-# Move form_submission outside of the class
 @csrf_exempt
 def sign_in_submission(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         username = data.get('username')
         password = data.get('password')
+        logger.info(f"Attempting to sign in user: {username}")
 
         try:
-            # Fetch user from Register model
             user = Register.objects.get(username=username)
-            if check_password(password, user.password):  # Check the hashed password
-                login(request, user)  # Log the user in
+            if check_password(password, user.password): 
+                login(request, user) 
                 return JsonResponse({'status': 'success', 'message': 'Logged in successfully', 'redirect_url': '/dashboard/'})
             else:
+                logger.warning(f"Invalid password for user: {username}")
                 return JsonResponse({'status': 'error', 'message': 'Invalid username or password'})
         except Register.DoesNotExist:
+            logger.error(f"User not found: {username}")
             return JsonResponse({'status': 'error', 'message': 'Invalid username or password'})
 
+    logger.warning("Invalid request method")
     return JsonResponse({'status': 'error', 'message': 'Only POST requests are allowed'})
 
 
 def sign_up_submission(request):
+    
     if request.method == "POST":
         try:
             data = json.loads(request.body)
@@ -74,10 +78,8 @@ def sign_up_submission(request):
             password = data.get("password")
             phone = data.get("phone")
 
-            # Hash the password before saving
             hashed_password = make_password(password)
 
-            # Create a new Register instance with hashed password
             user = Register.objects.create(
                 username=name,
                 email=email,

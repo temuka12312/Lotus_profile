@@ -1,5 +1,5 @@
 Django
 requests
-jazzmin
 mysqlclient
 django-debug-toolbar
+jazzmin
