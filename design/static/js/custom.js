@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error(error);
             console.log(password)
-            alert('Sign In failed');
+            window.location.href = "login";
         });
     });
 
