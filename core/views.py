@@ -29,7 +29,8 @@ class Home(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["information"] = PersonInfo.objects.all()
+        context["information"] = PersonInfo.objects.filter()
+        context["registers"] = Register.objects.filter()
         return context
     
 class First(TemplateView):
@@ -38,6 +39,7 @@ class First(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['information'] = PersonInfo.objects.filter()
+        context["registers"] = Register.objects.filter()
         return context
 
 
@@ -87,6 +89,14 @@ def sign_up_submission(request):
                 password=hashed_password,
             )
             user.save()
+            
+            person_info = PersonInfo.objects.create(
+                name=name,
+                phone=phone,
+                email=email,
+                user=user  # Link the PersonInfo with the newly registered user
+            )
+            person_info.save()
 
             return JsonResponse({"status": "success", "message": "User registered successfully."})
 

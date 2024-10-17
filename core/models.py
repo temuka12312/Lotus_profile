@@ -15,22 +15,6 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
-
-
-
-class PersonInfo(BaseModel):
-    name = models.CharField("Нэр", max_length=256)
-    person_image = models.ImageField(verbose_name="Зураг", null=True, blank=True, upload_to="midsite/person-information")
-    bio = models.TextField(verbose_name="bio")
-    phone = models.IntegerField(verbose_name="Утасны дугаар")
-    email = models.CharField(verbose_name="Gmail", max_length=100, null=True, blank=True)
-    
-    class Meta:
-        verbose_name = "Person information"
-        verbose_name_plural = "Person information"
-        
-    def __str__(self) -> str:
-        return self.name
     
 
 class Register(BaseModel):
@@ -45,3 +29,21 @@ class Register(BaseModel):
         
     def __str__(self) -> str:
         return self.username
+    
+    
+class PersonInfo(models.Model):
+    name = models.CharField("Нэр", max_length=256)
+    person_image = models.ImageField(verbose_name="Зураг", null=True, blank=True, upload_to="midsite/person-information")
+    bio = models.TextField(verbose_name="bio")
+    phone = models.IntegerField(verbose_name="Утасны дугаар")
+    email = models.CharField(verbose_name="Gmail", max_length=100, null=True, blank=True)
+    
+    # Add ForeignKey to the Register model to link it with a user
+    user = models.ForeignKey(Register, on_delete=models.CASCADE, related_name='person_info', null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Person information"
+        verbose_name_plural = "Person information"
+    
+    def __str__(self):
+        return self.name
