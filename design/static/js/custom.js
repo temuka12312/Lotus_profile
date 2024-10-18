@@ -29,16 +29,27 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             if (data.status === 'success') {
-                // Redirect to the specified URL from the response
-                window.location.href = "login"; // Use the URL returned from the server
+                // Ensure the 'user_pk' is defined and used properly
+                const userPk = "{{ user_pk }}";  // Ensure this is the correct pk passed from the server
+                if (userPk) {
+                    window.location.href = `/login/${userPk}/`;  // Redirect with pk in the URL
+                } else {
+                    console.error("User PK is not defined");
+                }
+                
             } else {
-                alert(data.message); // Show error message
+                alert(data.message);  // Show error message
             }
         })
         .catch(error => {
             console.error(error);
             console.log(password)
-            window.location.href = "login";
+            const userPk = "{{ user_pk }}";  // Ensure this is the correct pk passed from the server
+            if (userPk) {
+                window.location.href = `/login/${userPk}/`;  // Redirect with pk in the URL
+            } else {
+                console.error("User PK is not defined");
+            }
         });
     });
 

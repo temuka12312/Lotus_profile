@@ -30,8 +30,11 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["information"] = PersonInfo.objects.filter()
-        context["registers"] = Register.objects.filter()
+        users = Register.objects.filter(pk=kwargs.get("pk")).first()
+        context['user'] = users
+        context['user_pk'] = users.pk  # Add the pk to the context
         return context
+
     
 class First(TemplateView):
     template_name = "first.html"
@@ -71,7 +74,6 @@ def sign_in_submission(request):
 
 
 def sign_up_submission(request):
-    
     if request.method == "POST":
         try:
             data = json.loads(request.body)

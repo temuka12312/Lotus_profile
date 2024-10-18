@@ -37,8 +37,6 @@ class PersonInfo(models.Model):
     bio = models.TextField(verbose_name="bio")
     phone = models.IntegerField(verbose_name="Утасны дугаар")
     email = models.CharField(verbose_name="Gmail", max_length=100, null=True, blank=True)
-    
-    # Add ForeignKey to the Register model to link it with a user
     user = models.ForeignKey(Register, on_delete=models.CASCADE, related_name='person_info', null=True, blank=True)
 
     class Meta:

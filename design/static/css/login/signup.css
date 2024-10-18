@@ -67,6 +67,7 @@ a{color:inherit;text-decoration:none}
 	position:relative;
 	perspective:1000px;
 	transform-style:preserve-3d;
+	top: 35px;
 }
 .login-form .group{
 	margin-bottom:15px;
