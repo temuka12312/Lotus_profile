@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'core',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,7 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = 'your_project.asgi.application'
 
 WSGI_APPLICATION = 'midsite.wsgi.application'
 
@@ -121,6 +123,16 @@ USE_I18N = False
 USE_L10N = False
 
 USE_TZ = False
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('127.0.0.1', 6379)],  # Redis server
+        },
+    },
+}
 
 
 # Static files (CSS, JavaScript, Images)

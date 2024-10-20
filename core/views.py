@@ -32,7 +32,8 @@ class Home(TemplateView):
         context["information"] = PersonInfo.objects.filter()
         users = Register.objects.filter(pk=kwargs.get("pk")).first()
         context['user'] = users
-        context['user_pk'] = users.pk  # Add the pk to the context
+        if users:
+            context['user_pk'] = users.pk  # Pass the correct pk
         return context
 
     
@@ -106,3 +107,9 @@ def sign_up_submission(request):
             return JsonResponse({"status": "error", "message": str(e)})
 
     return JsonResponse({"status": "error", "message": "Invalid request method."})
+
+
+def room(request, room_name):
+    return render(request, 'chat/chat_room.html', {
+        'friends': room_name
+    })

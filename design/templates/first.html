@@ -27,7 +27,9 @@
 
             <div class="profile-body"><!-- profile body section -->
                 <div class="profile-actions">
-                    <button class="follow">Follow</button>
+                    <a href="{% url 'chat_room' room_name='example_room' %}">
+                        <button class="follow">Follow</button>
+                    </a>                    
                     <button class="message">Message</button>
                     <section class="bio">
                         <div class="bio-header">

@@ -3,3 +3,5 @@ requests
 mysqlclient
 django-debug-toolbar
 jazzmin
+channels 
+channels_redis

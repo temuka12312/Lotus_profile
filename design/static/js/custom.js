@@ -30,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             if (data.status === 'success') {
                 // Ensure the 'user_pk' is defined and used properly
-                const userPk = "{{ user_pk }}";  // Ensure this is the correct pk passed from the server
+                const userPk = "{{ user_pk|safe }}"; // Ensure this is the correct pk passed from the server
                 if (userPk) {
-                    window.location.href = `/login/${userPk}/`;  // Redirect with pk in the URL
+                    window.location.href = `/login/${userPk}/`;  // Dynamically build the URL using userPk
                 } else {
                     console.error("User PK is not defined");
                 }
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error(error);
             console.log(password)
-            const userPk = "{{ user_pk }}";  // Ensure this is the correct pk passed from the server
+            const userPk = "{{ user_pk|safe }}";  // Ensure this is the correct pk passed from the server
             if (userPk) {
-                window.location.href = `/login/${userPk}/`;  // Redirect with pk in the URL
+                window.location.href = `/login/${userPk}/`;  // Dynamically build the URL using userPk
             } else {
                 console.error("User PK is not defined");
             }
