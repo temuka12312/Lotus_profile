@@ -3,4 +3,4 @@ requests
 django-debug-toolbar
 django-jazzmin
 channels 
-channels_redis
+channels_redis 
