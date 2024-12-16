@@ -1,7 +1,6 @@
 Django
 requests
-mysqlclient
 django-debug-toolbar
-jazzmin
+django-jazzmin
 channels 
 channels_redis
