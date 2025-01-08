@@ -25,7 +25,7 @@ def ping(request):
 logger = logging.getLogger(__name__)
 
 class Home(TemplateView):
-    template_name = "index.html"
+    template_name = "welcome.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -39,6 +39,16 @@ class Home(TemplateView):
     
 class First(TemplateView):
     template_name = "first.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['information'] = PersonInfo.objects.filter()
+        context["registers"] = Register.objects.filter()
+        return context
+    
+    
+class Index(TemplateView):
+    template_name = "index.html"
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
