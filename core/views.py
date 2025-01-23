@@ -9,6 +9,7 @@ from django.views.generic import TemplateView
 from django.views.decorators.csrf import csrf_exempt
 from core.models import PersonInfo
 from core.models import Register
+from core.models import Game
 from django.contrib.auth import login
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.hashers import make_password
@@ -52,6 +53,7 @@ class Index(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['games'] = Game.objects.all()
         context['information'] = PersonInfo.objects.filter()
         context["registers"] = Register.objects.filter()
         return context

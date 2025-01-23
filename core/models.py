@@ -44,3 +44,18 @@ class PersonInfo(models.Model):
     
     def __str__(self):
         return self.name
+    
+    
+class Game(models.Model):
+    game_name = models.CharField("Нэр", max_length=256)
+    game_img = models.ImageField(verbose_name="Зураг", null=True, blank=True, upload_to="midsite/home/game_info")
+    game_details = models.TextField(verbose_name="Заавар", null=True, blank=True)
+    download_link = models.URLField(verbose_name="Тоглоомны холбоос", null=True, blank=True)
+    
+    class Meta:
+        verbose_name = "Game"
+        verbose_name_plural = "Games"
+        
+    def __str__(self):
+        return self.game_name
+        

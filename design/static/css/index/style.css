@@ -1071,6 +1071,10 @@
 .s-1{
     border-radius: 20%;
 }
+.img-1{
+    width: 100%;
+    border-radius: 2%;
+}
  .text-img figure {margin: 0;}
   .text-img figure img {float: right; max-width: 950px;}
  .text {
