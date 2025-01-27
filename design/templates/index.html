@@ -33,7 +33,7 @@
                             <div class="full">
                                 <div class="center-desk">
                                     <div class="logo">
-                                        <a href="home"><img src="{{ STATIC_URL }}images/index/logo.png" alt="#" /></a>
+                                        <a href="home"><img style="position: relative;bottom: 125px;" src="{{ STATIC_URL }}images/index/logo.png" alt="#" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -42,9 +42,6 @@
                             <ul class="top_icon">
                                 <li class="button_login"> <a href="welcome">Login</a> </li>
                                 <li> <a href="welcome">Signup</a> </li>
-                                <li class="mean-last">
-                                    <a href="#"><img src="{{ STATIC_URL }}images/index/search_icon.png" alt="#" /></a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -76,11 +73,6 @@
                                     <a href="#">download</a>
                                 </div>
                             </div>
-                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
-                                <div class="text-img">
-                                   <figure><img class="s-1" src="{{ STATIC_URL }}images/index/img.png" alt="#"/></figure>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,7 +101,7 @@
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                                 <div class="Games">
                                     <h3>{{ game.game_name }}</h3>
-                                    <p>{{ game.game_details }}</p>
+                                    <p style="text-align: justify;">{{ game.game_details }}</p>
                                     <a href="{{ download_link }}">Free Download</a>
                                 </div>
                             </div>
@@ -141,7 +133,7 @@
                  </div>
                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
                      <div class="box_text">
-                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                         <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
                          <a href="#">Read more</a>
                      </div>
                  </div> 
@@ -160,7 +152,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="about-box">
-                        <figure><img src="{{ STATIC_URL }}images/index/about.jpg" alt="#" /></figure>
+                        <figure><img style="width: 80%;" src="{{ STATIC_URL }}images/index/about.jpg" alt="#" /></figure>
                         <p> consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             <br> labore et dolore magna aliqua. Ut enim conseq</p>
                     </div>
@@ -181,20 +173,20 @@
             </div>
             <div class="row">
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 offset-md-2">
-                    <div class="row box">
+                    <div class="row box" style="left: 4%;position: relative;">
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                             <div class="testimonial_box">
-                                <figure><img src="{{ STATIC_URL }}images/index/test1.png" alt="#" /></figure>
+                                <figure><img style="width: 77%;" src="{{ STATIC_URL }}images/index/test1.png" alt="#" /></figure>
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
                             <div class="testimonial_box">
-                                <figure><img src="{{ STATIC_URL }}images/index/test2.png" alt="#" /></figure>
+                                <figure><img style="width: 77%;" src="{{ STATIC_URL }}images/index/test2.png" alt="#" /></figure>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                             <div class="testimonial_box">
-                                <figure><img src="{{ STATIC_URL }}images/index/test3.png" alt="#" /></figure>
+                                <figure><img style="width: 77%;" src="{{ STATIC_URL }}images/index/test3.png" alt="#" /></figure>
                             </div>
                         </div>
                     </div>
@@ -206,35 +198,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="contact" class="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <form class="contact_bg">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <input class="contactus" placeholder="Name" type="text" name="Name">
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <input class="contactus" placeholder="Phone" type="text" name="Email">
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                <input class="contactus" placeholder="Email" type="text" name="Email">
-                            </div>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
-                            </div>
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                <button class="send">Send</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
         </div>
     </div>
    
@@ -261,7 +224,7 @@
                                         <li><a href="#"><img src="{{ STATIC_URL }}icon/lin(2).png"></a></li>
                                          <li><a href="#"><img src="{{ STATIC_URL }}icon/instagram.png"></a></li>
                                     </ul>
-                                    <a href="index.html"> <img src="{{ STATIC_URL }}images/index/logo.png" alt="logo"></a>
+                                    <a href="index.html"> <img style="position: relative;height: 179px;bottom: 60px;right: 10%;" src="{{ STATIC_URL }}images/index/logo.png" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -294,10 +257,10 @@
                                     <h3>Contact us </h3>
                                     <ul class="loca">
                                         <li>
-                                            <a href="#"><img src="{{ STATIC_URL }}icon/loc.png" alt="#" /></a>London 145
-                                            <br>United Kingdom </li>
+                                            <a href="#"><img src="{{ STATIC_URL }}icon/loc.png" alt="#" /></a>Mongolia
+                                            <br>Ulaanbaatar</li>
                                         <li>
-                                            <a href="#"><img src="{{ STATIC_URL }}icon/email.png" alt="#" /></a>demo@gmail.com </li>
+                                            <a href="#"><img src="{{ STATIC_URL }}icon/email.png" alt="#" /></a>lotus@gmail.com </li>
                                         <li>
                                             <a href="#"><img src="{{ STATIC_URL }}icon/call.png" alt="#" /></a>+12586954775 </li>
                                     </ul>
@@ -311,7 +274,7 @@
             </div>
             <div class="copyright">
                 <div class="container">
-                    <p>© 2019 All Rights Reserved. <a href="https://html.design/">Free html Templates</a></p>
+                    <p style="text-align: justify;">© 2019 All Rights Reserved. <a href="https://html.design/">Free html Templates</a></p>
                 </div>
             </div>
         </div>
