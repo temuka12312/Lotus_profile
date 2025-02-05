@@ -58,4 +58,18 @@ class Game(models.Model):
         
     def __str__(self):
         return self.game_name
+    
+
+class Software(models.Model):
+    title = models.CharField("Гарчиг", max_length=256)
+    description = models.TextField(verbose_name="Тайлбар", null=True, blank=True)
+    img = models.ImageField(verbose_name="Зураг", null=True, blank=True, upload_to="midsite/home/software")
+    link = models.URLField(verbose_name="Үсрэх url", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Software"
+        verbose_name = "Softwares"
+
+    def __str__(self):
+        return self.title
         

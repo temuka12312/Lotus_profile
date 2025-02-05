@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 ">
                                 <div class="text-bg">
-                                    <h1>amazing<br> 3d game</h1>
+                                    <h1>amazing<br> offline game</h1>
                                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br> tempor incididunt ut</span>
                                     <a href="#">download</a>
                                 </div>
@@ -102,7 +102,7 @@
                                 <div class="Games">
                                     <h3>{{ game.game_name }}</h3>
                                     <p style="text-align: justify;">{{ game.game_details }}</p>
-                                    <a href="{{ download_link }}">Free Download</a>
+                                    <a href="{{ game.download_link }}"> Download </a>
                                 </div>
                             </div>
                         </div>
@@ -113,32 +113,34 @@
     </div>
    
     <div id="software" class="We_are">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="titlepage">
-                        <h2>Software</h2>
+        {% for software in sft %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="titlepage">
+                            <h2>{{ software.title }}</h2>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                     <div class="box_bg">
-                         <div class="box_bg_img">
-                             <figure><img src="{{ STATIC_URL }}images/index/soft.jpg"></figure>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
-                     <div class="box_text">
-                         <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborumLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                         <a href="#">Read more</a>
-                     </div>
-                 </div> 
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="box_bg">
+                            <div class="box_bg_img">
+                                <figure><img src="{{ MEDIA_URL }}{{ software.img }}"></figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
+                        <div class="box_text">
+                            <p style="text-align: justify;">{{ software.description }}</p>
+                            <a href="{{ software.link }}">READ MORE</a>
+                        </div>
+                    </div> 
+                </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
     <div id="about" class="about">
         <div class="container">
