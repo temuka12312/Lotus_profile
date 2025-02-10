@@ -35,7 +35,7 @@ urlpatterns = [
     path("", Index.as_view(), name='home'),
     path("welcome", Login.as_view(), name='welcome'),
     path("login/start/", First.as_view(), name='start'),
-    path('login/<pk>/', Home.as_view(), name='login'),
+    path('login/', Home.as_view(), name='login'),
     path('sign-in/', sign_in_submission, name='sign_in_submission'),
     path('sign-up/', sign_up_submission, name='sign_up_submission'),
     path('__debug__/', include(debug_toolbar.urls)),

@@ -23,33 +23,20 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Sign In failed');
+                window.location.href = `/login/`;
+                // throw new Error('Sign In failed');
             }
             return response.json();
         })
         .then(data => {
             if (data.status === 'success') {
-                // Ensure the 'user_pk' is defined and used properly
-                const userPk = "{{ user_pk|safe }}"; // Ensure this is the correct pk passed from the server
-                if (userPk) {
-                    window.location.href = `/login/${userPk}/`;  // Dynamically build the URL using userPk
-                } else {
-                    console.error("User PK is not defined");
-                }
-                
+                window.location.href = `/login/`;  // Redirect to login page
             } else {
                 alert(data.message);  // Show error message
             }
         })
         .catch(error => {
             console.error(error);
-            console.log(password)
-            const userPk = "{{ user_pk|safe }}";  // Ensure this is the correct pk passed from the server
-            if (userPk) {
-                window.location.href = `/login/${userPk}/`;  // Dynamically build the URL using userPk
-            } else {
-                console.error("User PK is not defined");
-            }
         });
     });
 
@@ -87,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
             if (data.status === 'success') {
-                // Redirect or show success message
                 location.reload(); // Redirect to homepage or dashboard
             } else {
                 alert(data.message); // Show error message
@@ -95,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => {
             console.error(error);
-            console.log(jsonObject)
             alert('Sign Up failed');
         });
     });

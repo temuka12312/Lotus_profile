@@ -32,10 +32,7 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["information"] = PersonInfo.objects.filter()
-        users = Register.objects.filter(pk=kwargs.get("pk")).first()
-        context['user'] = users
-        if users:
-            context['user_pk'] = users.pk  # Pass the correct pk
+        context['user'] = Register.objects.filter()
         return context
 
     
@@ -79,10 +76,10 @@ def sign_in_submission(request):
                 return JsonResponse({'status': 'success', 'message': 'Logged in successfully', 'redirect_url': '/dashboard/'})
             else:
                 logger.warning(f"Invalid password for user: {username}")
-                return JsonResponse({'status': 'error', 'message': 'Invalid username or password'})
+                return JsonResponse({'status': 'error', 'message': 'Нэр эсвэл нууц үг буруу байна МАЛАА!!!'})
         except Register.DoesNotExist:
             logger.error(f"User not found: {username}")
-            return JsonResponse({'status': 'error', 'message': 'Invalid username or password'})
+            return JsonResponse({'status': 'error', 'message': 'Нэр эсвэл нууц үг буруу байна МАЛАА!!!'})
 
     logger.warning("Invalid request method")
     return JsonResponse({'status': 'error', 'message': 'Only POST requests are allowed'})
@@ -111,7 +108,7 @@ def sign_up_submission(request):
                 name=name,
                 phone=phone,
                 email=email,
-                user=user  # Link the PersonInfo with the newly registered user
+                user=user  
             )
             person_info.save()
 
