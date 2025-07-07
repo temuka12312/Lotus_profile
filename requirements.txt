@@ -1,4 +1,5 @@
 Django
+Pillow
 requests
 django-debug-toolbar
 django-jazzmin
