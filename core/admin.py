@@ -2,6 +2,8 @@ from django.contrib import admin
 from core.models import PersonInfo, Register
 from core.models import Game
 from core.models import Software
+from core.models import Userflug
+from core.models import Report_offer
 
 
 class PersonInfoAdmin(admin.ModelAdmin):
@@ -35,3 +37,19 @@ class SoftwareAdmin(admin.ModelAdmin):
     ordering = ('title',)  
 
 admin.site.register(Software, SoftwareAdmin)
+
+class ReportAdmin(admin.ModelAdmin):
+    list_display = ('reporter_name', 'report', 'reporter_offer',)
+    search_fields = ('reporter_name', 'report', 'reporter_offer',)
+    list_filter = ('reporter_name',)  
+    ordering = ('reporter_name',) 
+
+admin.site.register(Report_offer, ReportAdmin) 
+
+class UserflugAdmin(admin.ModelAdmin):
+    list_display = ('user_name', 'user_role', 'user_profile',)
+    search_fields = ('user_name', 'user_role', 'user_profile',)
+    list_filter = ('user_name',)  
+    ordering = ('user_name',) 
+
+admin.site.register(Userflug, UserflugAdmin)

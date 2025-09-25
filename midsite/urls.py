@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from core.views import sign_in_submission
 from core.views import sign_up_submission
+from core.views import Userflug
 from core.views import room
 from core.views import Index
 import debug_toolbar
@@ -38,6 +39,7 @@ urlpatterns = [
     path('login/', Home.as_view(), name='login'),
     path('sign-in/', sign_in_submission, name='sign_in_submission'),
     path('sign-up/', sign_up_submission, name='sign_up_submission'),
+    path('user_profile/', Userflug.as_view, name='profile'),
     path('__debug__/', include(debug_toolbar.urls)),
     path('chat/<str:room_name>/', room, name='chat_room'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
