@@ -12,7 +12,7 @@ result n terminal deer ingej haragdna:
 
 daraanan project luugee:
 
-    $ cd Lotusprofile
+    $ cd Lotus_profile
 
 gej orno
 
@@ -28,7 +28,7 @@ result n terminal deer ingej haragdna:
 
 daraanan project luugee:
 
-    $ cd Lotusprofile
+    $ cd Lotus_profile
 
 gej orno
 
