@@ -72,29 +72,42 @@ class Software(models.Model):
 
     def __str__(self):
         return self.title
-        
 
-class Userflug(models.Model):
-    user_name = models.CharField("Name", max_length=256)
-    user_profile = models.ImageField(verbose_name="Profile", null=True, blank=True, upload_to="midsite/home/user_profile")
-    user_role = models.TextField(verbose_name="Role", null=True, blank=True)
-    user_social_link = models.URLField(verbose_name="Social links", null=True, blank=True)
+
+class ReportOffer(models.Model):
+    user_name = models.CharField("user name", max_length=256)
+    user_report = models.TextField(verbose_name= "user_reported", null=True, blank=True)
+    user_proof = models.ImageField(verbose_name = "user_proof", null=True, blank=True, upload_to = "midsite/home/report")
+    reported_page = models.URLField(verbose_name="reported_page_url", null=True, blank=True)
 
     class Meta:
-        verbose_name = "user_roles"
-        verbose_name_plural = "user_roles"
-
+        verbose_name = "user_report"
+        verbose_name_plural = "user_reports"
+    
     def __str__(self):
         return self.user_name
+
+# class Userflug(models.Model):
+#     user_name = models.CharField("Name", max_length=256)
+#     user_profile = models.ImageField(verbose_name="Profile", null=True, blank=True, upload_to="midsite/home/user_profile")
+#     user_role = models.TextField(verbose_name="Role", null=True, blank=True)
+#     user_social_link = models.URLField(verbose_name="Social links", null=True, blank=True)
+
+#     class Meta:
+#         verbose_name = "user_roles"
+#         verbose_name_plural = "user_roles"
+
+#     def __str__(self):
+#         return self.user_name
     
-class Report_offer(models.Model):
-    reporter_name = models.CharField("Reporter name", max_length=256)
-    reporter_offer = models.TextField(verbose_name= "Reporter offer", null=True, blank=True)
-    report = models.ImageField(verbose_name="Report", null=True, blank=True, upload_to="midsite/home/report")
+# class Report_offer(models.Model):
+#     reporter_name = models.CharField("Reporter name", max_length=256)
+#     reporter_offer = models.TextField(verbose_name= "Reporter offer", null=True, blank=True)
+#     report = models.ImageField(verbose_name="Report", null=True, blank=True, upload_to="midsite/home/report")
 
-    class Meta:
-        verbose_name = "Report"
-        verbose_name_plural = "Report"
+#     class Meta:
+#         verbose_name = "Report"
+#         verbose_name_plural = "Report"
 
-    def __str__(self):
-        return self.reporter_name 
+#     def __str__(self):
+#         return self.reporter_name 

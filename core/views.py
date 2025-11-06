@@ -10,8 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 from core.models import PersonInfo
 from core.models import Register
 from core.models import Game
-from core.models import Userflug
-from core.models import Report_offer
+# from core.models import Userflug
+# from core.models import Report_offer
 from core.models import Software
 from django.contrib.auth import login
 from django.contrib.auth.hashers import check_password
@@ -60,14 +60,14 @@ class Index(TemplateView):
         return context
 
 
-class Report(TemplateView):
-    template_name = "index.html"
+# class Report(TemplateView):
+#     template_name = "index.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['report'] = Report_offer.objects.all()
-        context['flug'] = Userflug.objects.filter()
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['report'] = Report_offer.objects.all()
+#         context['flug'] = Userflug.objects.filter()
+#         return context
 
 
 class Login(TemplateView):
