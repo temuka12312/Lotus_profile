@@ -1,18 +1,34 @@
 # Lotus_profile
 
-# Getting Started
+# Getting Started( windows )
 
 ehleed orcinluuga orno
 terminal deeree:
 
-    $ lantuuvirtualenv\script\activate.bat
+    $ env\script\activate.bat
 result n terminal deer ingej haragdna:
 
-    $ (lantuuvirtualenv)c:users\user
+    $ (env)c:users\user
 
 daraanan project luugee:
 
-    $ cd algo-biydaalt
+    $ cd Lotusprofile
+
+gej orno
+
+# Getting Started( linux & archlinux )
+
+ehleed orcinluuga orno
+terminal deeree:
+
+    $ source env/bin/activate 
+result n terminal deer ingej haragdna:
+
+    $ 󰣇 ~ ❯                                                                        env 3.13.7  11:02 
+
+daraanan project luugee:
+
+    $ cd Lotusprofile
 
 gej orno
 
